@@ -37,7 +37,12 @@
                       </form>
                 </div>
                 <div class="col">
-                    <p>here is where my other stuff should be</p>
+                    <p>{% for meal in data %}
+                      {{ meal[0] }}
+                      {{ meal[1] }}
+                      {{ meal[2] }}
+                      {% endfor %}
+                    </p>
                 </div>
             </div>            
         </div>
