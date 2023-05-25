@@ -12,11 +12,11 @@
         <div class="container text-center" >
             <div class="row my-5">
                 <div class="col">
-                    <form>
-                        <label for="meal_name" class="form-label mt-5 mb-1" >Meal Name</label>
-                        <input type="text" class="form-control" id="meal_name" placeholder="Meal Name" name="meal_name">
-                        <label for="meal_type" class="form-label mt-3">Meal Type</label>
-                        <select class="form-select" aria-label="Default select example" id="meal_type" name="mean_type">
+                    <form action="/submit" method="POST">
+                        <label for="mealname" class="form-label mt-5 mb-1" >Meal Name</label>
+                        <input type="text" class="form-control" id="mealname" placeholder="Meal Name" name="mealname">
+                        <label for="mealtype" class="form-label mt-3">Meal Type</label>
+                        <select class="form-select" aria-label="Default select example" id="mealtype" name="mealtype">
                             <option selected>Kids Breakfast</option>
                             <option value="1">Aeriel Snack</option>
                             <option value="2">Breakfast for All</option>
@@ -32,7 +32,7 @@
                           </select>
 
                           <div class="mb-2 text-center">
-                            <button type="submit" class="btn btn-secondary mt-2">Submit</button>
+                            <input class="btn btn-primary mt-4" type="submit" value="Submit">
                           </div>
                       </form>
                 </div>
