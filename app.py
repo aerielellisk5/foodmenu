@@ -11,7 +11,7 @@ ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:P@ssword123@localhost/foodmenu"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:password123@localhost:5432/foodmenu"
     
     # app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://username:password@localhost:port/DBNAME"
     
@@ -75,4 +75,4 @@ def submit():
 if __name__ == '__main__':
     # we want the server to keep reloading since we are in developerment so we keep this to true
     # app.debug = True
-    app.run()
+    app.run(host="0.0.0.0", port=3000)
