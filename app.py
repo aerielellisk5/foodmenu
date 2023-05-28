@@ -44,4 +44,4 @@ def submit():
 if __name__ == '__main__':
     # we want the server to keep reloading since we are in developerment so we keep this to true
     # app.debug = True
-    app.run(port=3000)
+    app.run(port=3000, host="0.0.0.0")

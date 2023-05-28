@@ -1,0 +1,17 @@
+# grabbing the base image
+FROM postgres:latest
+
+# name of the table
+ENV POSTGRES_DB=foodmenu
+
+# name of the postgres user
+ENV POSTGRES_USER=postgres
+
+# password here
+ENV POSTGRES_PASSWORD=password123
+
+# expose sql port
+EXPOSE 5432
+
+# not entry point necessary here like I would need for the application, as of right now
+
