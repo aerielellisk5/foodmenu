@@ -15,3 +15,6 @@ EXPOSE 5432
 
 # not entry point necessary here like I would need for the application, as of right now
 
+
+# docker build --no-cache -t foodmenu_db:v1 -f Dockerfile.db .   
+# docker run -d --name foodmenu_db_container --network foodmenu-network foodmenu_db:v1

@@ -6,7 +6,11 @@ import psycopg2
 app = Flask(__name__)
 
 
-conn = psycopg2.connect(database="foodmenu", host="localhost", user="postgres", password="password123", port="5432")
+conn = psycopg2.connect(database="foodmenu", host="be4ce484a6cb", user="postgres", password="password123", port="5432")
+# host originally = localhost, but I actually think this needs to change to be connected to the container
+# for my db container, the hostname = be4ce484a6cb, so want to see if thatll work now
+
+
 cur = conn.cursor()
 
 cur.execute('''CREATE TABLE IF NOT EXISTS meal (id serial PRIMARY KEY, mealname varchar(100), mealtype varchar(100));''' )
