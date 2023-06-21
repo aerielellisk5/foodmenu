@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - "gha-create-container"
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
 # will update the branch later; for now I just want to see the containers created
 jobs:
   build:
