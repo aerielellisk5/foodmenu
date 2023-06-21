@@ -6,9 +6,11 @@ import psycopg2
 app = Flask(__name__)
 
 
-conn = psycopg2.connect(database="foodmenu", host="be4ce484a6cb", user="postgres", password="password123", port="5432")
+conn = psycopg2.connect(database="foodmenu", host="db", user="postgres", password="password123", port="5432")
 # host originally = localhost, but I actually think this needs to change to be connected to the container
 # for my db container, the hostname = be4ce484a6cb, so want to see if thatll work now
+
+# now that I'm running docker compose, looks like host should actually be "db".  It should be db because this is the service name I chose for the database in my docker file
 
 
 cur = conn.cursor()

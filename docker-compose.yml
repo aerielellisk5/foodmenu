@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
+  db:
+    build: 
+      context: .
+      dockerfile: Dockerfile.db
+    ports:
+    - 5433:5432
+
