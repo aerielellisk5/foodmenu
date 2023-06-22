@@ -35,10 +35,15 @@ jobs:
         run: |
           echo $REGISTRY
           echo $REPOSITORY
+          echo "it's failing here 1"
           docker build -f Dockerfile.app -t $REGISTRY/app:$IMAGE_TAG .
+          echo "it's failing here 2"
           docker build -f Dockerfile.db -t $REGISTRY/db:$IMAGE_TAG .
+          echo "it's failing here 3"
           docker push $REGISTRY/app:$IMAGE_TAG
+          echo "it's failing here 4"
           docker push $REGISTRY/db:$IMAGE_TAG
+          echo "it all passed!"
 # docker build or docker compose build github actions troubleshooting//multiple images
 
 
