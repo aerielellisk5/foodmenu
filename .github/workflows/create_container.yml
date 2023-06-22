@@ -35,8 +35,8 @@ jobs:
         run: |
           echo $REGISTRY
           echo $REPOSITORY
-          docker build -f Dockerfile.app -t $REGISTRY/$REPOSITORY:$IMAGE_TAG_app .
-          docker build -f Dockerfile.db -t $REGISTRY/$REPOSITORY:$IMAGE_TAG_db .
+          docker build -f Dockerfile.app -t $REGISTRY/$REPOSITORY:$IMAGE_TAG/app .
+          docker build -f Dockerfile.db -t $REGISTRY/$REPOSITORY:$IMAGE_TAG/db.
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG_db
 # docker build or docker compose build github actions troubleshooting//multiple images
 
