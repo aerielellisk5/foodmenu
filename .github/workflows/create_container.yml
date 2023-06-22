@@ -33,9 +33,15 @@ jobs:
           REPOSITORY: foodmenu
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -f Dockerfile.app -t $REGISTRY/$IMAGE_TAG:app .
-          docker push $REGISTRY/$IMAGE_TAG:app
+           docker build -f Dockerfile.app -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -t $REGISTRY/$REPOSITORY:app .
+           docker build -f Dockerfile.db -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -t $REGISTRY/$REPOSITORY:db .
+           docker image push --all-tags $REGISTRY/$REPOSITORY
 
+          # this code works
+          # docker build -f Dockerfile.app -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          # docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+          # adding multiple tags: docker build -t whenry/fedora-jboss:latest -t whenry/fedora-jboss:v2.1 .
 
 
           # echo $REGISTRY
@@ -49,6 +55,10 @@ jobs:
           # echo "it's failing here 4"
           # docker push $REGISTRY/db:$IMAGE_TAG
           # echo "it all passed!"
+
+          
+
+
 # docker build or docker compose build github actions troubleshooting//multiple images
 
 
