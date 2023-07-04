@@ -9,6 +9,9 @@ services:
       - 3000:3000
     depends_on:
       - db
+    restart: on-failure:10
+    environment:
+    - PYTHONUNBUFFERED=1
 
   db:
     build: 
@@ -17,3 +20,6 @@ services:
     ports:
     - 5433:5432
 
+volumes:
+  foodapp-volume:
+    external: true
