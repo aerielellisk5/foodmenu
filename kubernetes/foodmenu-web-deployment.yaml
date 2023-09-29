@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foodmenu-web-deployment
+  labels:
+    app: foodmenu-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foodmenu-web
+  template:
+    metadata:
+      labels:
+        app: 
+    spec:
+      containers:
+      - name: alpine
+        image: <<aws_account_number>>.dkr.ecr.<<aws_region>>.amazonaws.com/alpine:latest
+        command: ['sh', '-c', 'echo Container is Running ; sleep 3600']
