@@ -26,29 +26,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: foodmenu-web-deployment
+  name: foodmenu-db
   labels:
-    app: foodmenu-web
+    database: foodmenu-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: foodmenu-web
+      database: foodmenu-db
   template:
     metadata:
       labels:
-        app: foodmenu-web
+        database: foodmenu-db
     spec:
-      initContainers:
-      - name: check-db-ready
-        image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_db:latest
-        command: ['sh', '-c', 
-          'until pg_isready -h postgres -p 5432; 
-          do echo waiting for database; sleep 2; done;']
       containers:
-      - name: foodmenu-web
-        image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_web:latest
-        # command: ['sh', '-c', 'echo Container is Running ; sleep 3600']
+      - name: foodmenu-db
+        image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_db:latest
         ports:  
         - containerPort: 80
+        # readinessProbe:
+        #   httpGet:
+        #     # scheme: HTTP
+        #     path: /index.html
+        #     port: 8443
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+      
       
