@@ -1,49 +1,25 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: foodmenu-web-deployment
-#   labels:
-#     app: foodmenu-web
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: foodmenu-web
-#   template:
-#     metadata:
-#       labels:
-#         app: foodmenu-web
-#     spec:
-#       containers:
-#       - name: foodmenu-web
-#         image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_web
-#         ports:
-#         - containerPort: 80
-#       #   command: ['sh', '-c', 'echo Container is Running ; sleep 3600']
-#       #   # is this necessary?
-#       # - containerPort: 80
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: foodmenu-db
   labels:
-    database: foodmenu-db
+    app: foodmenu-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      database: foodmenu-db
+      app: foodmenu-db
   template:
     metadata:
       labels:
-        database: foodmenu-db
+        app: foodmenu-db
     spec:
       containers:
       - name: foodmenu-db
         image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_db:latest
         ports:  
-        - containerPort: 80
+        - containerPort: 5432
+          name: db
         # readinessProbe:
         #   httpGet:
         #     # scheme: HTTP

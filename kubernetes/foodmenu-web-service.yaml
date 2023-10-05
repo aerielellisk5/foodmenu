@@ -9,7 +9,10 @@ spec:
   ports:
       # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
     - port: 80
-      targetPort: 80
+      targetPort: 3000
+      # targetport is what the node will target on the container
       # Optional field
       # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
       nodePort: 30007
+      # nodePort can be commented out....
+      protocol: TCP

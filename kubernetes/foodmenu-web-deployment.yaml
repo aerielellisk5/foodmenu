@@ -43,12 +43,12 @@ spec:
       - name: check-db-ready
         image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_db:latest
         command: ['sh', '-c', 
-          'until pg_isready -h postgres -p 5432; 
+          'until pg_isready -h db -p 5432; 
           do echo waiting for database; sleep 2; done;']
       containers:
       - name: foodmenu-web
         image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_web:latest
         # command: ['sh', '-c', 'echo Container is Running ; sleep 3600']
         ports:  
-        - containerPort: 80
+        - containerPort: 3000
       
