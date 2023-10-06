@@ -23,7 +23,22 @@ spec:
       containers:
       - name: foodmenu-web
         image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_web:latest
-        # command: ['sh', '-c', 'echo Container is Running ; sleep 3600']
+        command: ["/bin/sh", "-c"]
+        args:
+        - echo starting;
+          touch /tmp/healthy;
+          echo about to sleep; 
+          sleep 30; 
+          rm -f /tmp/healthy; 
+          echo removed file;
+          sleep 600
+        livenessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 10
+          periodSeconds: 5
         ports:  
         - containerPort: 3000
       
