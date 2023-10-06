@@ -20,12 +20,5 @@ spec:
         ports:  
         - containerPort: 5432
           name: db
-        # readinessProbe:
-        #   httpGet:
-        #     # scheme: HTTP
-        #     path: /index.html
-        #     port: 8443
-        #   initialDelaySeconds: 10
-        #   periodSeconds: 5
-      
+
       
