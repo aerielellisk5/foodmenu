@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: foodmenu-db
+spec:
+  selector:
+    matchLabels:
+      app: foodmenu-db
+  serviceName: "headless"
+  replicas: 1
+  minReadySeconds: 5 # by default is 0
+  template:
+    metadata:
+      labels:
+        app: foodmenu-db
+    spec:
+      # terminationGracePeriodSeconds: 5
+      containers:
+      - name: foodmenu-db
+        image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_db:latest
+        ports:
+        - containerPort: 5432
+          name: db
+        volumeMounts:
+        - name: postgresql-data #no idea what this should be
+          mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgresql-data
+          persistentVolumeClaim:
+            claimName: postgres-db-volume-claim
+  

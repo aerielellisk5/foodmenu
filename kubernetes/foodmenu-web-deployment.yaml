@@ -23,15 +23,17 @@ spec:
       containers:
       - name: foodmenu-web
         image: 370584750074.dkr.ecr.us-east-1.amazonaws.com/foodmenu_web:latest
-        command: ["/bin/sh", "-c"]
-        args:
-        - echo starting;
-          touch /tmp/healthy;
-          echo about to sleep; 
-          sleep 30; 
-          rm -f /tmp/healthy; 
-          echo removed file;
-          sleep 600
+        # command: ["/bin/sh", "-c"]
+        command: ["python3", "-u", "app.py"]
+        # args:
+        # - echo starting;
+        #   touch /tmp/healthy;
+        #   echo about to sleep; 
+        #   sleep 30; 
+        #   rm -f /tmp/healthy; 
+        #   echo removed file;
+        #   sleep 600
+        args: ["healthcheck.sh"]
         livenessProbe:
           exec:
             command:
